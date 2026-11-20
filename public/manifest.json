@@ -1,0 +1,9 @@
+{
+  "name": "Kogi State Rural Electrification Decision-Support Platform",
+  "short_name": "Kogi REMP",
+  "start_url": "/report-challenge",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "description": "Rural Electrification Needs Assessment, Field Verification, and Renewable Energy Planning Platform for Kogi State."
+}

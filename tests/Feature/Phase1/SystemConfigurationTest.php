@@ -20,7 +20,7 @@ class SystemConfigurationTest extends TestCase
 
     public function test_super_admin_can_manage_system_configuration_tables(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
 
         $this->actingAs($admin)
             ->post(route('config.asset-categories.store'), [
@@ -53,7 +53,7 @@ class SystemConfigurationTest extends TestCase
 
     public function test_form_request_validation_rejects_invalid_lga_and_fee_inputs(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
 
         $this->actingAs($admin)
             ->post(route('config.lgas.store'), [

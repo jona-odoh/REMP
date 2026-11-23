@@ -47,7 +47,7 @@ class AuditTrailTest extends TestCase
 
     public function test_crud_operations_log_before_and_after_json_values(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $this->actingAs($admin);
 
         $category = AssetCategory::create([
@@ -88,7 +88,7 @@ class AuditTrailTest extends TestCase
 
     public function test_audit_logs_are_strictly_immutable(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $this->actingAs($admin);
 
         AssetCategory::create([
@@ -105,7 +105,7 @@ class AuditTrailTest extends TestCase
 
     public function test_audit_log_cannot_be_deleted(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $this->actingAs($admin);
 
         AssetCategory::create([
@@ -122,7 +122,7 @@ class AuditTrailTest extends TestCase
 
     public function test_audit_trail_access_is_restricted_to_super_admin_and_director(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $director = User::where('email', 'director@ksmct.kogistate.gov.ng')->firstOrFail();
         $viewer = User::where('email', 'viewer@ksmct.kogistate.gov.ng')->firstOrFail();
 

@@ -35,9 +35,20 @@ class RbacAndUserLifecycleTest extends TestCase
         }
     }
 
+    public function test_super_admin_can_login_with_admin_admin_credentials(): void
+    {
+        $this->post(route('login.store'), [
+            'email' => 'admin',
+            'password' => 'admin',
+        ])->assertRedirect(route('dashboard'));
+
+        $this->assertAuthenticated();
+        $this->assertTrue(auth()->user()->hasRole(RoleName::SUPER_ADMIN->value));
+    }
+
     public function test_super_admin_can_create_staff_user_with_role_and_department(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
 
         $response = $this->actingAs($admin)->post(route('admin.users.store'), [
             'name' => 'Adebayo Bello',
@@ -64,7 +75,7 @@ class RbacAndUserLifecycleTest extends TestCase
 
     public function test_deactivated_user_cannot_login_and_sessions_are_terminated(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $officer = User::where('email', 'licensing@ksmct.kogistate.gov.ng')->firstOrFail();
 
         DB::table('sessions')->insert([
@@ -98,7 +109,7 @@ class RbacAndUserLifecycleTest extends TestCase
 
     public function test_super_admin_cannot_deactivate_or_force_logout_themselves(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
 
         $this->actingAs($admin)
             ->post(route('admin.users.deactivate', $admin))
@@ -111,7 +122,7 @@ class RbacAndUserLifecycleTest extends TestCase
 
     public function test_admin_password_reset_forces_password_change_on_next_request(): void
     {
-        $admin = User::where('email', 'admin@ksmct.kogistate.gov.ng')->firstOrFail();
+        $admin = User::where('email', 'admin')->firstOrFail();
         $officer = User::where('email', 'dataentry@ksmct.kogistate.gov.ng')->firstOrFail();
 
         $this->actingAs($admin)

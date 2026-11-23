@@ -14,7 +14,8 @@ class DemoUserSeeder extends Seeder
         $demoUsers = [
             [
                 'name' => 'Ibrahim Suleiman',
-                'email' => 'admin@ksmct.kogistate.gov.ng',
+                'email' => 'admin',
+                'password' => 'admin',
                 'staff_id' => 'KSMCT/ADM/001',
                 'phone' => '+234 803 000 1001',
                 'department' => Department::ADMINISTRATION,
@@ -80,12 +81,13 @@ class DemoUserSeeder extends Seeder
 
         foreach ($demoUsers as $item) {
             $role = $item['role'];
-            unset($item['role']);
+            $password = $item['password'] ?? 'Password@2026!';
+            unset($item['role'], $item['password']);
 
             $user = User::updateOrCreate(
                 ['email' => $item['email']],
                 $item + [
-                    'password' => 'Password@2026!',
+                    'password' => $password,
                     'is_active' => true,
                     'must_change_password' => false,
                     'email_verified_at' => now(),

@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:150'],
-            'email' => ['required', 'string', 'email', 'max:191', Rule::unique('users', 'email')->ignore($target->id)],
+            'email' => ['required', 'string', 'max:191', Rule::unique('users', 'email')->ignore($target->id)],
             'staff_id' => ['nullable', 'string', 'max:50', Rule::unique('users', 'staff_id')->ignore($target->id)],
             'phone' => ['nullable', 'string', 'max:30'],
             'department' => ['required', Rule::enum(Department::class)],

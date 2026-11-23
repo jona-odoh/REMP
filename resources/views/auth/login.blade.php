@@ -7,8 +7,9 @@
     @csrf
 
     <div>
-        <label for="email" class="block text-sm font-medium text-slate-700">Official Ministry Email</label>
-        <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus autocomplete="username"
+        <label for="email" class="block text-sm font-medium text-slate-700">Username / Official Ministry Email</label>
+        <input id="email" name="email" type="text" value="{{ old('email') }}" required autofocus autocomplete="username"
+               placeholder="e.g. admin or officer@ksmct.kogistate.gov.ng"
                class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600">
     </div>
 

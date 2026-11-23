@@ -168,7 +168,7 @@ return [
         'steps' => [
             'Asset Name (*): Must be unique within the selected LGA (duplicate detection prevents double-entry).',
             'Category & LGA (*): Choose from configured Ministry categories and Kogi\'s 21 LGAs.',
-            'GPS Latitude & Longitude: Enter decimal WGS84 coordinates (e.g. 7.8023000, 6.7333000). If unknown, leave both blank to automatically default to the LGA headquarters centroid.',
+            'GPS Latitude & Longitude: Click directly on the embedded Kogi State map (or drag the pin / click "Use Device GPS") to auto-fill exact WGS84 coordinates. Leave blank to default to the selected LGA headquarters centroid.',
             'Ownership Status & Condition Assessment (*): Select current ownership and physical state, plus optional Visitor Capacity and Historical Description.',
         ],
         'tips' => 'Offline Protection: Your form draft is automatically saved in your browser\'s localStorage as you type so flaky internet will not lose your work.',
@@ -290,7 +290,7 @@ return [
             'LGA, Establishment Type & Classification Rating (*): Select from configured LGAs and fee-schedule ratings.',
             'Rooms & Beds (*): Enter total room count and bed capacity (must be at least 1).',
             'Proprietor Name & Contact (*): Enter owner/manager name and phone or email.',
-            'GPS Latitude & Longitude: Optional — leave blank to default to the selected LGA centroid.',
+            'GPS Latitude & Longitude: Click the embedded Kogi State map (or drag the pin / click "Use Device GPS") to auto-fill coordinates, or leave blank to default to the selected LGA centroid.',
         ],
         'tips' => 'Offline Protection: Form progress is auto-saved in localStorage while you type.',
     ],

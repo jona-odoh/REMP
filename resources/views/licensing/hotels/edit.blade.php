@@ -67,6 +67,8 @@
                 <label for="longitude" class="block text-sm font-medium text-slate-700">GPS Longitude</label>
                 <input id="longitude" name="longitude" type="number" step="0.0000001" value="{{ old('longitude', $hotel->location?->longitude) }}" class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm">
             </div>
+
+            <x-gps-picker :latitude="old('latitude', $hotel->location?->latitude)" :longitude="old('longitude', $hotel->location?->longitude)" :lgas="$lgas" />
         </div>
 
         <div class="pt-3 flex items-center gap-3">

@@ -95,6 +95,18 @@
                 </div>
                 @endcan
 
+                @can('viewAny', \App\Models\Project::class)
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Projects &amp; Programs</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="{{ route('projects.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('projects.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Project Registry &amp; Budgets
+                        </a>
+                    </div>
+                </div>
+                @endcan
+
                 @if(auth()->user()->can('viewAny', \App\Models\User::class) || auth()->user()->can('viewAny', \App\Models\AuditLog::class))
                 <div>
                     <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Administration</p>

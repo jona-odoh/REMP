@@ -17,6 +17,7 @@ use App\Http\Controllers\Licensing\HotelController;
 use App\Http\Controllers\Licensing\InspectionController;
 use App\Http\Controllers\Licensing\LicenseApplicationController;
 use App\Http\Controllers\Licensing\LicenseFeeController;
+use App\Http\Controllers\Projects\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
@@ -108,5 +109,11 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::get('/fees/export', [LicenseFeeController::class, 'export'])->name('fees.export');
             Route::delete('/fees/{fee}', [LicenseFeeController::class, 'destroy'])->name('fees.destroy');
         });
+
+        // Phase 4: Project & Program Tracking
+        Route::resource('projects', ProjectController::class);
+        Route::post('/projects/{project}/milestones', [ProjectController::class, 'storeMilestone'])->name('projects.milestones.store');
+        Route::post('/projects/{project}/milestones/{milestone}/toggle', [ProjectController::class, 'completeMilestone'])->name('projects.milestones.toggle');
+        Route::post('/projects/{project}/expenditures', [ProjectController::class, 'storeExpenditure'])->name('projects.expenditures.store');
     });
 });

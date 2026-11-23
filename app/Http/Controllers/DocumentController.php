@@ -9,6 +9,7 @@ use App\Models\Hotel;
 use App\Models\Inspection;
 use App\Models\IntangibleHeritage;
 use App\Models\LicenseApplication;
+use App\Models\Project;
 use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class DocumentController extends Controller
                 'hotel' => Hotel::findOrFail($request->integer('documentable_id')),
                 'license_application' => LicenseApplication::findOrFail($request->integer('documentable_id')),
                 'inspection' => Inspection::findOrFail($request->integer('documentable_id')),
+                'project' => Project::findOrFail($request->integer('documentable_id')),
                 default => null,
             };
         }

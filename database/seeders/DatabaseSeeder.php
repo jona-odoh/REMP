@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 DemoUserSeeder::class,
                 CulturalHeritageSeeder::class,
                 HospitalityDemoSeeder::class,
+                ProjectDemoSeeder::class,
             ]);
         } finally {
             AuditService::$disabled = false;

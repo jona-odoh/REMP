@@ -17,6 +17,7 @@ use App\Models\Lga;
 use App\Models\LicenseApplication;
 use App\Models\LicenseFee;
 use App\Models\LicenseType;
+use App\Models\Project;
 use App\Models\User;
 use App\Policies\AuditLogPolicy;
 use App\Policies\CulturalAssetPolicy;
@@ -26,6 +27,7 @@ use App\Policies\InspectionPolicy;
 use App\Policies\IntangibleHeritagePolicy;
 use App\Policies\LicenseApplicationPolicy;
 use App\Policies\LicenseFeePolicy;
+use App\Policies\ProjectPolicy;
 use App\Policies\SystemConfigPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -58,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(LicenseApplication::class, LicenseApplicationPolicy::class);
         Gate::policy(Inspection::class, InspectionPolicy::class);
         Gate::policy(LicenseFee::class, LicenseFeePolicy::class);
+        Gate::policy(Project::class, ProjectPolicy::class);
 
         // Super Admin bypasses standard checks except immutable AuditLog mutations & self-lockout actions
         Gate::before(function (User $user, string $ability, array $arguments = []) {

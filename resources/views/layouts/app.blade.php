@@ -107,6 +107,26 @@
                 </div>
                 @endcan
 
+                @if(auth()->user()->can('reports.view'))
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Reporting &amp; Analytics</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="{{ route('reports.kpi') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('reports.kpi') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Executive KPI Dashboard
+                        </a>
+                        <a href="{{ route('reports.standard') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('reports.standard*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Standard Reports (PDF/Excel)
+                        </a>
+                        <a href="{{ route('reports.query-builder') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('reports.query-builder') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Ad-Hoc Query Builder
+                        </a>
+                    </div>
+                </div>
+                @endif
+
                 @if(auth()->user()->can('viewAny', \App\Models\User::class) || auth()->user()->can('viewAny', \App\Models\AuditLog::class))
                 <div>
                     <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Administration</p>

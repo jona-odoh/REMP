@@ -1,5 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import Chart from 'chart.js/auto';
 import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -13,6 +14,7 @@ L.Icon.Default.mergeOptions({
 });
 
 window.L = L;
+window.Chart = Chart;
 window.Alpine = Alpine;
 
 // Reusable offline-tolerant localStorage autosave helper for long Ministry forms

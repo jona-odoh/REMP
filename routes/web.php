@@ -18,6 +18,8 @@ use App\Http\Controllers\Licensing\InspectionController;
 use App\Http\Controllers\Licensing\LicenseApplicationController;
 use App\Http\Controllers\Licensing\LicenseFeeController;
 use App\Http\Controllers\Projects\ProjectController;
+use App\Http\Controllers\Reports\AdHocQueryController;
+use App\Http\Controllers\Reports\ReportingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
@@ -115,5 +117,15 @@ Route::middleware(['auth', 'active'])->group(function () {
         Route::post('/projects/{project}/milestones', [ProjectController::class, 'storeMilestone'])->name('projects.milestones.store');
         Route::post('/projects/{project}/milestones/{milestone}/toggle', [ProjectController::class, 'completeMilestone'])->name('projects.milestones.toggle');
         Route::post('/projects/{project}/expenditures', [ProjectController::class, 'storeExpenditure'])->name('projects.expenditures.store');
+
+        // Phase 5: Reporting & Decision-Support Dashboard
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/kpi', [ReportingController::class, 'kpiDashboard'])->name('kpi');
+            Route::get('/standard', [ReportingController::class, 'standardReports'])->name('standard');
+            Route::get('/standard/{reportKey}/{format}', [ReportingController::class, 'downloadStandardReport'])
+                ->whereIn('format', ['pdf', 'xlsx'])
+                ->name('standard.download');
+            Route::get('/query-builder', [AdHocQueryController::class, 'index'])->name('query-builder');
+        });
     });
 });

@@ -141,6 +141,9 @@ Route::middleware(['auth', 'active'])->group(function () {
         Route::prefix('reports')->name('reports.')->group(function () {
             Route::get('/kpi', [ReportingController::class, 'kpiDashboard'])->name('kpi');
             Route::get('/standard', [ReportingController::class, 'standardReports'])->name('standard');
+            Route::get('/standard/{reportKey}', [ReportingController::class, 'showStandardReport'])
+                ->whereIn('reportKey', ['monthly-licensing', 'heritage-inventory', 'project-status', 'inspection-rates'])
+                ->name('standard.show');
             Route::get('/standard/{reportKey}/{format}', [ReportingController::class, 'downloadStandardReport'])
                 ->whereIn('format', ['pdf', 'xlsx'])
                 ->name('standard.download');

@@ -31,6 +31,10 @@ class ReportingAndQueryBuilderTest extends TestCase
 
         foreach (['monthly-licensing', 'heritage-inventory', 'project-status', 'inspection-rates'] as $key) {
             $this->actingAs($director)
+                ->get(route('reports.standard.show', $key))
+                ->assertOk();
+
+            $this->actingAs($director)
                 ->get(route('reports.standard.download', [$key, 'pdf']))
                 ->assertOk()
                 ->assertHeader('content-type', 'application/pdf');
@@ -41,11 +45,15 @@ class ReportingAndQueryBuilderTest extends TestCase
         }
     }
 
-    public function test_viewer_cannot_export_standard_reports(): void
+    public function test_viewer_can_view_reports_in_browser_but_cannot_export_standard_reports(): void
     {
         $viewer = User::where('email', 'viewer@ksmct.kogistate.gov.ng')->firstOrFail();
 
         $this->actingAs($viewer)->get(route('reports.standard'))->assertOk();
+        $this->actingAs($viewer)
+            ->get(route('reports.standard.show', 'monthly-licensing'))
+            ->assertOk()
+            ->assertSee('Monthly Hospitality Licensing Summary');
         $this->actingAs($viewer)
             ->get(route('reports.standard.download', ['monthly-licensing', 'pdf']))
             ->assertForbidden();

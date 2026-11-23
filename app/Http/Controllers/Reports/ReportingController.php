@@ -41,6 +41,18 @@ class ReportingController extends Controller
         return view('reports.standard', compact('reports'));
     }
 
+    public function showStandardReport(Request $request, string $reportKey): View
+    {
+        abort_unless($request->user()->can('reports.view'), 403);
+
+        $report = $this->reportingService->buildStandardReport($reportKey);
+
+        return view('reports.show', [
+            'reportKey' => $reportKey,
+            'report' => $report,
+        ]);
+    }
+
     public function downloadStandardReport(Request $request, string $reportKey, string $format): Response|BinaryFileResponse
     {
         abort_unless($request->user()->can('reports.export'), 403);

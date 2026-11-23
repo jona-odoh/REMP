@@ -436,12 +436,23 @@ return [
 
     'reports.standard' => [
         'title' => 'Standard Ministry Reports Guide',
-        'summary' => 'Generate official Ministry PDF and Excel reports ready for executive briefings and filings.',
+        'summary' => 'View or export official Ministry PDF and Excel reports ready for executive briefings and filings.',
         'steps' => [
             'Choose from Monthly Licensing Summary, Heritage Asset Inventory by LGA, Project Status Report, or Inspection Completion Rates.',
+            'Click "View Report" to inspect the full live report table directly in your browser.',
             'Click "Download PDF" for a formatted landscape A4 document or "Download Excel (.xlsx)" for spreadsheet analysis.',
         ],
-        'tips' => 'Exporting reports requires Executive or Department Head permissions.',
+        'tips' => 'All officers with reporting access can view reports online; PDF/Excel downloads require Executive or Department Head permissions.',
+    ],
+
+    'reports.standard.show' => [
+        'title' => 'Standard Report Preview Guide',
+        'summary' => 'Live tabular preview of the selected Ministry standard report.',
+        'steps' => [
+            'Review the generated rows and record count directly on screen.',
+            'Use the Print, Download PDF, or Download Excel (.xlsx) buttons at the top right to save or print a copy.',
+        ],
+        'tips' => 'The data shown here is live and matches the PDF and Excel exports identically.',
     ],
 
     'reports.query-builder' => [

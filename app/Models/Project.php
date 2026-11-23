@@ -57,6 +57,11 @@ class Project extends Model
         return $this->morphMany(Document::class, 'documentable')->latest();
     }
 
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable')->whereNull('parent_id')->with(['author', 'replies'])->latest();
+    }
+
     public function totalApprovedBudget(): float
     {
         return (float) $this->expenditures->sum('approved_budget');

@@ -121,4 +121,6 @@
 </div>
 
 <x-documents-panel :documents="$project->documents" documentable-type="project" :documentable-id="$project->id" :categories="['Project Proposal', 'Contract / MOU', 'Progress Report', 'Site Photo', 'Valuation Certificate']" />
+
+<x-notes-panel :notes="$project->notes" notable-type="project" :notable-id="$project->id" />
 @endsection

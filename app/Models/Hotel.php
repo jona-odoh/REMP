@@ -69,6 +69,11 @@ class Hotel extends Model
         return $this->morphMany(Document::class, 'documentable')->latest();
     }
 
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable')->whereNull('parent_id')->with(['author', 'replies'])->latest();
+    }
+
     public function scopeFilter(Builder $query, array $filters): Builder
     {
         return $query

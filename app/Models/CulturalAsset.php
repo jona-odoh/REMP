@@ -74,6 +74,11 @@ class CulturalAsset extends Model
         return $this->morphMany(Document::class, 'documentable')->latest();
     }
 
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable')->whereNull('parent_id')->with(['author', 'replies'])->latest();
+    }
+
     /**
      * @return array<string, mixed>
      */

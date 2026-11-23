@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Task;
+use App\Models\User;
+
+class TaskPolicy
+{
+    public function viewAny(User $user): bool
+    {
+        return $user->can('tasks.view');
+    }
+
+    public function create(User $user): bool
+    {
+        return $user->can('tasks.create');
+    }
+
+    public function update(User $user, Task $task): bool
+    {
+        return $user->can('tasks.update') || $task->assigned_to === $user->getKey();
+    }
+
+    public function delete(User $user, Task $task): bool
+    {
+        return $user->can('tasks.delete');
+    }
+}

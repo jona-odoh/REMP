@@ -80,6 +80,11 @@ class LicenseApplication extends Model
         return $this->morphMany(Document::class, 'documentable')->latest();
     }
 
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable')->whereNull('parent_id')->with(['author', 'replies'])->latest();
+    }
+
     public function hasCompletedInspection(): bool
     {
         return $this->inspections()

@@ -127,6 +127,32 @@
                 </div>
                 @endif
 
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Operations</p>
+                    <div class="mt-2 space-y-1">
+                        @can('viewAny', \App\Models\Document::class)
+                        <a href="{{ route('documents.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('documents.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Document Repository
+                        </a>
+                        @endcan
+                        @can('viewAny', \App\Models\Task::class)
+                        <a href="{{ route('tasks.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('tasks.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Tasks &amp; Assignments
+                        </a>
+                        @endcan
+                        @php($unreadCount = auth()->user()->unreadNotifications()->count())
+                        <a href="{{ route('notifications.index') }}"
+                           class="flex items-center justify-between rounded-md px-3 py-2 font-medium {{ request()->routeIs('notifications.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            <span>Notifications</span>
+                            @if($unreadCount > 0)
+                                <span class="rounded-full bg-rose-600 px-2 py-0.5 text-[10px] font-bold text-white">{{ $unreadCount }}</span>
+                            @endif
+                        </a>
+                    </div>
+                </div>
+
                 @if(auth()->user()->can('viewAny', \App\Models\User::class) || auth()->user()->can('viewAny', \App\Models\AuditLog::class))
                 <div>
                     <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Administration</p>

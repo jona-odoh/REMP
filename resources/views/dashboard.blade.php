@@ -26,9 +26,9 @@
 <div class="rounded-lg bg-white border border-slate-200 shadow-sm p-5">
     <div class="flex items-center justify-between">
         <div>
-            <h3 class="text-base font-semibold text-slate-900">Phase 1 &amp; Phase 2 Active</h3>
+            <h3 class="text-base font-semibold text-slate-900">All 6 Ministry Back-Office Modules Active</h3>
             <p class="text-sm text-slate-600 mt-1">
-                RBAC, immutable audit trail, system configuration, cultural &amp; tourism asset registry (SRID 4326 + revision history), intangible heritage, local media uploads, bulk import/export, and interactive Leaflet map are live.
+                RBAC &amp; immutable audit trail, Cultural &amp; Tourism Registry (SRID 4326 + Leaflet), Hospitality Licensing &amp; Compliance, Project &amp; Budget Tracking, Executive KPIs &amp; PDF/Excel Reports, Document Repository, Tasks, and Threaded Internal Notes are live.
             </p>
         </div>
         <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">

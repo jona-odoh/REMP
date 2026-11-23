@@ -12,6 +12,9 @@ use App\Http\Controllers\Culture\CulturalAssetController;
 use App\Http\Controllers\Culture\IntangibleHeritageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Licensing\ComplianceDashboardController;
 use App\Http\Controllers\Licensing\HotelController;
 use App\Http\Controllers\Licensing\InspectionController;
@@ -80,10 +83,26 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::resource('heritage', IntangibleHeritageController::class)->parameters(['heritage' => 'intangible_heritage']);
         });
 
-        // Phase 2.3: Polymorphic Documents & Media (Local On-Premise Storage)
+        // Phase 2.3 & 6.1: Central Document Repository & Polymorphic Media (Local Storage)
+        Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
         Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
+        Route::get('/documents/{document}', [DocumentController::class, 'show'])->name('documents.show');
         Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
         Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+
+        // Phase 6.2: Task Assignment & In-App Notification Center
+        Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+        Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+        Route::patch('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.status');
+        Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+        Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+        Route::post('/notifications/{id}/read', [NotificationController::class, 'markRead'])->name('notifications.read');
+        Route::post('/notifications/read-all', [NotificationController::class, 'markAllRead'])->name('notifications.read-all');
+
+        // Phase 6.3: Threaded Internal Notes (Polymorphic)
+        Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
+        Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
 
         // Phase 3: Hotel & Hospitality Licensing Workflow
         Route::prefix('licensing')->name('licensing.')->group(function () {

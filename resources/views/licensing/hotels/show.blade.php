@@ -73,4 +73,6 @@
 </div>
 
 <x-documents-panel :documents="$hotel->documents" documentable-type="hotel" :documentable-id="$hotel->id" />
+
+<x-notes-panel :notes="$hotel->notes" notable-type="hotel" :notable-id="$hotel->id" />
 @endsection

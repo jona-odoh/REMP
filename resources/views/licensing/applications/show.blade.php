@@ -100,4 +100,6 @@
 </div>
 
 <x-documents-panel :documents="$application->documents" documentable-type="license_application" :documentable-id="$application->id" :categories="['Application Form', 'CAC Certificate', 'Tax Clearance', 'Fire Safety Cert', 'Sanitation Cert']" />
+
+<x-notes-panel :notes="$application->notes" notable-type="license_application" :notable-id="$application->id" />
 @endsection

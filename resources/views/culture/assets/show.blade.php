@@ -86,4 +86,6 @@
 </div>
 
 <x-documents-panel :documents="$asset->documents" documentable-type="cultural_asset" :documentable-id="$asset->id" />
+
+<x-notes-panel :notes="$asset->notes" notable-type="cultural_asset" :notable-id="$asset->id" />
 @endsection

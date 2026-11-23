@@ -9,6 +9,9 @@
 </head>
 <body class="min-h-screen bg-slate-900 flex items-center justify-center p-4 antialiased">
     <main class="w-full max-w-md bg-white rounded-xl shadow-xl border border-slate-200 p-6 sm:p-8">
+        <div class="flex justify-end mb-2">
+            <x-page-help-modal />
+        </div>
         <div class="text-center mb-6">
             <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-800">
                 Kogi State Government

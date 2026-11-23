@@ -227,9 +227,12 @@
                         <p class="text-xs text-slate-500">{{ __('ksmct.internal_notice') }}</p>
                     </div>
                 </div>
-                <div class="text-right text-xs text-slate-600 hidden sm:block">
-                    <div>{{ \App\Support\Format::date(now()) }} (WAT)</div>
-                    <div class="font-medium text-slate-800">{{ auth()->user()->staff_id ?? auth()->user()->email }}</div>
+                <div class="flex items-center gap-4">
+                    <x-page-help-modal />
+                    <div class="text-right text-xs text-slate-600 hidden sm:block">
+                        <div>{{ \App\Support\Format::date(now()) }} (WAT)</div>
+                        <div class="font-medium text-slate-800">{{ auth()->user()->staff_id ?? auth()->user()->email }}</div>
+                    </div>
                 </div>
             </header>
 

@@ -122,7 +122,17 @@ php artisan optimize:clear
 
 ---
 
-## 6. Running Automated Tests
+## 6. Offline Map Tiles (Optional Local Tile Server)
+
+Leaflet.js CSS and JavaScript are bundled locally via Vite (no CDN). By default, map tiles load from OpenStreetMap (`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`). For air-gapped or fully offline on-premise deployments, run a local tile server (e.g., `maptiler/tileserver-gl` with a Nigeria `.mbtiles` extract) on the Ministry server and set `MAP_TILE_URL` in `.env`:
+
+```env
+MAP_TILE_URL=http://<ministry-server-ip>:8085/styles/basic-preview/{z}/{x}/{y}.png
+```
+
+---
+
+## 7. Running Automated Tests
 
 ```bash
 php artisan test

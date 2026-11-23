@@ -8,7 +8,10 @@ use App\Http\Controllers\Config\ChecklistTemplateController;
 use App\Http\Controllers\Config\FeeScheduleController;
 use App\Http\Controllers\Config\LgaController;
 use App\Http\Controllers\Config\LicenseTypeController;
+use App\Http\Controllers\Culture\CulturalAssetController;
+use App\Http\Controllers\Culture\IntangibleHeritageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
@@ -56,5 +59,22 @@ Route::middleware(['auth', 'active'])->group(function () {
             Route::resource('fee-schedules', FeeScheduleController::class)->only(['index', 'store', 'update', 'destroy']);
             Route::resource('checklist-templates', ChecklistTemplateController::class)->only(['index', 'store', 'update', 'destroy']);
         });
+
+        // Phase 2: Cultural & Tourism Resource Registry
+        Route::prefix('culture')->name('culture.')->group(function () {
+            Route::get('/assets/map', [CulturalAssetController::class, 'map'])->name('assets.map');
+            Route::get('/assets/export', [CulturalAssetController::class, 'export'])->name('assets.export');
+            Route::get('/assets/import', [CulturalAssetController::class, 'showImport'])->name('assets.import.form');
+            Route::post('/assets/import', [CulturalAssetController::class, 'import'])->name('assets.import');
+            Route::get('/assets/template', [CulturalAssetController::class, 'downloadTemplate'])->name('assets.template');
+            Route::resource('assets', CulturalAssetController::class)->parameters(['assets' => 'cultural_asset']);
+
+            Route::resource('heritage', IntangibleHeritageController::class)->parameters(['heritage' => 'intangible_heritage']);
+        });
+
+        // Phase 2.3: Polymorphic Documents & Media (Local On-Premise Storage)
+        Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
+        Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
+        Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('documents.destroy');
     });
 });

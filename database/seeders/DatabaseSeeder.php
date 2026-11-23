@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
                 LgaSeeder::class,
                 SystemConfigSeeder::class,
                 DemoUserSeeder::class,
+                CulturalHeritageSeeder::class,
             ]);
         } finally {
             AuditService::$disabled = false;

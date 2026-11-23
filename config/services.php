@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'map' => [
+        // Defaults to OpenStreetMap; override with a local on-premise tile server (e.g. TileServer GL) for offline deployments.
+        'tile_url' => env('MAP_TILE_URL', 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+    ],
+
 ];

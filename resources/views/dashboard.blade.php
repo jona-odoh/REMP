@@ -10,12 +10,12 @@
         <p class="mt-2 text-2xl font-bold text-slate-900">{{ $stats['active_users'] }} <span class="text-sm font-normal text-slate-500">/ {{ $stats['total_users'] }}</span></p>
     </div>
     <div class="rounded-lg bg-white p-5 border border-slate-200 shadow-sm">
-        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Configured Kogi LGAs</p>
-        <p class="mt-2 text-2xl font-bold text-emerald-700">{{ $stats['lgas'] }}</p>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Documented Cultural Assets</p>
+        <p class="mt-2 text-2xl font-bold text-emerald-700">{{ $stats['cultural_assets'] }} <span class="text-sm font-normal text-slate-500">({{ $stats['intangible_heritages'] }} festivals)</span></p>
     </div>
     <div class="rounded-lg bg-white p-5 border border-slate-200 shadow-sm">
-        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Asset Categories &amp; License Types</p>
-        <p class="mt-2 text-2xl font-bold text-slate-900">{{ $stats['asset_categories'] }} <span class="text-sm font-normal text-slate-500">/ {{ $stats['license_types'] }}</span></p>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Configured Kogi LGAs</p>
+        <p class="mt-2 text-2xl font-bold text-slate-900">{{ $stats['lgas'] }}</p>
     </div>
     <div class="rounded-lg bg-white p-5 border border-slate-200 shadow-sm">
         <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Audit Events Today</p>
@@ -26,9 +26,9 @@
 <div class="rounded-lg bg-white border border-slate-200 shadow-sm p-5">
     <div class="flex items-center justify-between">
         <div>
-            <h3 class="text-base font-semibold text-slate-900">Phase 1 — Foundation Active</h3>
+            <h3 class="text-base font-semibold text-slate-900">Phase 1 &amp; Phase 2 Active</h3>
             <p class="text-sm text-slate-600 mt-1">
-                Role-based access control, immutable audit logging, and Kogi State system configuration tables are live.
+                RBAC, immutable audit trail, system configuration, cultural &amp; tourism asset registry (SRID 4326 + revision history), intangible heritage, local media uploads, bulk import/export, and interactive Leaflet map are live.
             </p>
         </div>
         <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">

@@ -43,6 +43,30 @@
                     </div>
                 </div>
 
+                @if(auth()->user()->can('viewAny', \App\Models\CulturalAsset::class) || auth()->user()->can('viewAny', \App\Models\IntangibleHeritage::class))
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Culture &amp; Tourism</p>
+                    <div class="mt-2 space-y-1">
+                        @can('viewAny', \App\Models\CulturalAsset::class)
+                        <a href="{{ route('culture.assets.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('culture.assets.index', 'culture.assets.create', 'culture.assets.show', 'culture.assets.edit', 'culture.assets.import*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Cultural &amp; Tourism Assets
+                        </a>
+                        <a href="{{ route('culture.assets.map') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('culture.assets.map') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Interactive Asset Map
+                        </a>
+                        @endcan
+                        @can('viewAny', \App\Models\IntangibleHeritage::class)
+                        <a href="{{ route('culture.heritage.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('culture.heritage.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Intangible Heritage
+                        </a>
+                        @endcan
+                    </div>
+                </div>
+                @endif
+
                 @if(auth()->user()->can('viewAny', \App\Models\User::class) || auth()->user()->can('viewAny', \App\Models\AuditLog::class))
                 <div>
                     <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Administration</p>

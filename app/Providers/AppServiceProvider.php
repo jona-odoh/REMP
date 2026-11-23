@@ -9,15 +9,23 @@ use App\Models\AuditLog;
 use App\Models\CulturalAsset;
 use App\Models\Document;
 use App\Models\FeeSchedule;
+use App\Models\Hotel;
+use App\Models\Inspection;
 use App\Models\InspectionChecklistTemplate;
 use App\Models\IntangibleHeritage;
 use App\Models\Lga;
+use App\Models\LicenseApplication;
+use App\Models\LicenseFee;
 use App\Models\LicenseType;
 use App\Models\User;
 use App\Policies\AuditLogPolicy;
 use App\Policies\CulturalAssetPolicy;
 use App\Policies\DocumentPolicy;
+use App\Policies\HotelPolicy;
+use App\Policies\InspectionPolicy;
 use App\Policies\IntangibleHeritagePolicy;
+use App\Policies\LicenseApplicationPolicy;
+use App\Policies\LicenseFeePolicy;
 use App\Policies\SystemConfigPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -46,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(CulturalAsset::class, CulturalAssetPolicy::class);
         Gate::policy(IntangibleHeritage::class, IntangibleHeritagePolicy::class);
         Gate::policy(Document::class, DocumentPolicy::class);
+        Gate::policy(Hotel::class, HotelPolicy::class);
+        Gate::policy(LicenseApplication::class, LicenseApplicationPolicy::class);
+        Gate::policy(Inspection::class, InspectionPolicy::class);
+        Gate::policy(LicenseFee::class, LicenseFeePolicy::class);
 
         // Super Admin bypasses standard checks except immutable AuditLog mutations & self-lockout actions
         Gate::before(function (User $user, string $ability, array $arguments = []) {

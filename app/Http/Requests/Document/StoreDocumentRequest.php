@@ -19,7 +19,7 @@ class StoreDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'documentable_type' => ['nullable', 'string', Rule::in(['cultural_asset', 'intangible_heritage'])],
+            'documentable_type' => ['nullable', 'string', Rule::in(['cultural_asset', 'intangible_heritage', 'hotel', 'license_application', 'inspection'])],
             'documentable_id' => ['nullable', 'integer', 'required_with:documentable_type'],
             'title' => ['required', 'string', 'max:180'],
             'description' => ['nullable', 'string', 'max:2000'],

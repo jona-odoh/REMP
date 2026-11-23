@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Document\StoreDocumentRequest;
 use App\Models\CulturalAsset;
 use App\Models\Document;
+use App\Models\Hotel;
+use App\Models\Inspection;
 use App\Models\IntangibleHeritage;
+use App\Models\LicenseApplication;
 use App\Services\DocumentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,6 +27,9 @@ class DocumentController extends Controller
             $attachable = match ($request->string('documentable_type')->toString()) {
                 'cultural_asset' => CulturalAsset::findOrFail($request->integer('documentable_id')),
                 'intangible_heritage' => IntangibleHeritage::findOrFail($request->integer('documentable_id')),
+                'hotel' => Hotel::findOrFail($request->integer('documentable_id')),
+                'license_application' => LicenseApplication::findOrFail($request->integer('documentable_id')),
+                'inspection' => Inspection::findOrFail($request->integer('documentable_id')),
                 default => null,
             };
         }

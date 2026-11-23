@@ -12,6 +12,11 @@ use App\Http\Controllers\Culture\CulturalAssetController;
 use App\Http\Controllers\Culture\IntangibleHeritageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Licensing\ComplianceDashboardController;
+use App\Http\Controllers\Licensing\HotelController;
+use App\Http\Controllers\Licensing\InspectionController;
+use App\Http\Controllers\Licensing\LicenseApplicationController;
+use App\Http\Controllers\Licensing\LicenseFeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('dashboard'));
@@ -76,5 +81,32 @@ Route::middleware(['auth', 'active'])->group(function () {
         Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
         Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
         Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+
+        // Phase 3: Hotel & Hospitality Licensing Workflow
+        Route::prefix('licensing')->name('licensing.')->group(function () {
+            Route::get('/compliance', [ComplianceDashboardController::class, 'index'])->name('compliance.index');
+
+            Route::resource('hotels', HotelController::class);
+
+            Route::get('/applications', [LicenseApplicationController::class, 'index'])->name('applications.index');
+            Route::get('/applications/create', [LicenseApplicationController::class, 'create'])->name('applications.create');
+            Route::post('/applications', [LicenseApplicationController::class, 'store'])->name('applications.store');
+            Route::get('/applications/{application}', [LicenseApplicationController::class, 'show'])->name('applications.show');
+            Route::post('/applications/{application}/submit', [LicenseApplicationController::class, 'submit'])->name('applications.submit');
+            Route::post('/applications/{application}/review', [LicenseApplicationController::class, 'startReview'])->name('applications.review');
+            Route::post('/applications/{application}/approve', [LicenseApplicationController::class, 'approve'])->name('applications.approve');
+            Route::post('/applications/{application}/reject', [LicenseApplicationController::class, 'reject'])->name('applications.reject');
+            Route::post('/applications/{application}/renew', [LicenseApplicationController::class, 'renew'])->name('applications.renew');
+
+            Route::get('/inspections', [InspectionController::class, 'index'])->name('inspections.index');
+            Route::post('/inspections', [InspectionController::class, 'store'])->name('inspections.store');
+            Route::get('/inspections/{inspection}', [InspectionController::class, 'show'])->name('inspections.show');
+            Route::post('/inspections/{inspection}/complete', [InspectionController::class, 'complete'])->name('inspections.complete');
+
+            Route::get('/fees', [LicenseFeeController::class, 'index'])->name('fees.index');
+            Route::post('/fees', [LicenseFeeController::class, 'store'])->name('fees.store');
+            Route::get('/fees/export', [LicenseFeeController::class, 'export'])->name('fees.export');
+            Route::delete('/fees/{fee}', [LicenseFeeController::class, 'destroy'])->name('fees.destroy');
+        });
     });
 });

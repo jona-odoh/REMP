@@ -67,6 +67,34 @@
                 </div>
                 @endif
 
+                @can('viewAny', \App\Models\Hotel::class)
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Hospitality Licensing</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="{{ route('licensing.compliance.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('licensing.compliance.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Compliance Dashboard
+                        </a>
+                        <a href="{{ route('licensing.hotels.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('licensing.hotels.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Hotel Registry
+                        </a>
+                        <a href="{{ route('licensing.applications.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('licensing.applications.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            License Pipeline
+                        </a>
+                        <a href="{{ route('licensing.inspections.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('licensing.inspections.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Inspections
+                        </a>
+                        <a href="{{ route('licensing.fees.index') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('licensing.fees.*') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Fee &amp; Revenue Tracker
+                        </a>
+                    </div>
+                </div>
+                @endcan
+
                 @if(auth()->user()->can('viewAny', \App\Models\User::class) || auth()->user()->can('viewAny', \App\Models\AuditLog::class))
                 <div>
                     <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Administration</p>

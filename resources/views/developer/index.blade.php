@@ -63,11 +63,11 @@
 
                     <div class="pt-1 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-indigo-200">
                         <a href="mailto:{{ $developer['email'] }}" class="inline-flex items-center gap-1.5 hover:text-white transition">
-                            <span aria-hidden="true">✉</span>
+                            {{-- <span aria-hidden="true">✉</span> --}}
                             <span>{{ $developer['email'] }}</span>
                         </a>
                         <a href="tel:{{ preg_replace('/\s+/', '', $developer['phone']) }}" class="inline-flex items-center gap-1.5 hover:text-white transition">
-                            <span aria-hidden="true">📞</span>
+                            {{-- <span aria-hidden="true">📞</span> --}}
                             <span>{{ $developer['phone'] }}</span>
                         </a>
                     </div>

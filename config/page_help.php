@@ -508,4 +508,14 @@ return [
         ],
         'tips' => 'The red badge in the sidebar shows your live unread notification count.',
     ],
+
+    'developer.info' => [
+        'title' => 'Developer & System Information Guide',
+        'summary' => 'Displays contact details for the system developer / ICT support team along with live runtime versions and implemented modules.',
+        'steps' => [
+            'Use the Support Email or Phone listed on this page to report system bugs or request administrative support.',
+            'Administrators can customise the developer name, organisation, email, phone, and links via DEVELOPER_* variables in .env or config/developer.php.',
+        ],
+        'tips' => 'Include your Staff ID and the page URL whenever contacting ICT support.',
+    ],
 ];

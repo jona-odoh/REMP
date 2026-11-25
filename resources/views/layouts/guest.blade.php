@@ -17,7 +17,7 @@
                 Kogi State Government
             </span>
             <h1 class="mt-3 text-xl font-bold text-slate-900">{{ __('ksmct.ministry_name') }}</h1>
-            <p class="mt-1 text-xs text-slate-500">{{ __('ksmct.internal_notice') }}</p>
+            {{-- <p class="mt-1 text-xs text-slate-500">{{ __('ksmct.internal_notice') }}</p> --}}
         </div>
 
         @if (session('status'))

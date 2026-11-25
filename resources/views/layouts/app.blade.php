@@ -24,7 +24,7 @@
                     <div>
                         <span class="inline-block rounded bg-emerald-700 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-white">Kogi State</span>
                         <h1 class="mt-1 text-sm font-bold leading-snug text-white">Ministry of Culture &amp; Tourism</h1>
-                        <p class="text-xs text-slate-400">Internal Back-Office</p>
+                        {{-- <p class="text-xs text-slate-400">Internal Back-Office</p> --}}
                     </div>
                     <button type="button" class="lg:hidden text-slate-300 hover:text-white" @click="sidebarOpen = false" aria-label="Close navigation menu">
                         ✕
@@ -200,6 +200,16 @@
                     </div>
                 </div>
                 @endcan
+
+                <div>
+                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">About &amp; Support</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="{{ route('developer.info') }}"
+                           class="flex items-center rounded-md px-3 py-2 font-medium {{ request()->routeIs('developer.info') ? 'bg-emerald-700 text-white' : 'text-slate-200 hover:bg-slate-800' }}">
+                            Developer Information
+                        </a>
+                    </div>
+                </div>
             </nav>
 
             <div class="border-t border-slate-800 p-4 text-xs">
@@ -224,7 +234,7 @@
                     </button>
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900">@yield('heading', 'Dashboard')</h2>
-                        <p class="text-xs text-slate-500">{{ __('ksmct.internal_notice') }}</p>
+                        {{-- <p class="text-xs text-slate-500">{{ __('ksmct.internal_notice') }}</p> --}}
                     </div>
                 </div>
                 <div class="flex items-center gap-4">

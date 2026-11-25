@@ -11,6 +11,7 @@ use App\Http\Controllers\Config\LicenseTypeController;
 use App\Http\Controllers\Culture\CulturalAssetController;
 use App\Http\Controllers\Culture\IntangibleHeritageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeveloperInfoController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\NotificationController;
@@ -44,6 +45,7 @@ Route::middleware(['auth', 'active'])->group(function () {
 
     Route::middleware('password.changed')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/developer', [DeveloperInfoController::class, 'index'])->name('developer.info');
 
         // Phase 1.1: User & Role Management
         Route::prefix('admin')->name('admin.')->group(function () {

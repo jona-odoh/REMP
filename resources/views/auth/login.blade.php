@@ -31,8 +31,8 @@
         Sign In to Back-Office
     </button>
 
-    <p class="text-center text-xs text-slate-500 pt-2">
+    {{-- <p class="text-center text-xs text-slate-500 pt-2">
         All access attempts and operations are recorded in the Ministry audit trail.
-    </p>
+    </p> --}}
 </form>
 @endsection

@@ -73,8 +73,9 @@
                     </div>
 
                     <div class="pt-0.5 text-xs text-slate-400 inline-flex items-center gap-1.5">
-                        <span aria-hidden="true">📍</span>
-                        <span>{{ $developer['organization'] }} · {{ $developer['location'] }}</span>
+                        {{-- <span aria-hidden="true">📍</span> --}}
+                        <span>
+                            {{ $developer['organization'] }} · {{ $developer['location'] }}</span>
                     </div>
                 </div>
             </div>

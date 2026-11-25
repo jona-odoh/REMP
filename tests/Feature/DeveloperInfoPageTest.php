@@ -29,9 +29,12 @@ class DeveloperInfoPageTest extends TestCase
         $this->actingAs($viewer)
             ->get(route('developer.info'))
             ->assertOk()
-            ->assertSee('Developer & System Information')
-            ->assertSee(config('developer.name'))
-            ->assertSee('System Runtime Profile')
+            ->assertSee('Developer &amp; Technical Documentation', false)
+            ->assertSee('Jonathan Odoh')
+            ->assertSee('Lead Software Architect')
+            ->assertSee('jonathanodoh3140@gmail.com')
+            ->assertSee('PHP Engine')
+            ->assertSee('Database Engine')
             ->assertSee('Page Guide');
     }
 }
